@@ -5,7 +5,9 @@ import moment from 'moment'
 
 let UserSchema = new mongoose.Schema({
   email: String,
-  password: String
+  password: String,
+  sent: [{ id: Number, firstName: String, lastName: String, email: String, message: String, subject: String }],
+  received: [{ id: Number, firstName: String, lastName: String, email: String, message: String, subject: String }]
 })
 
 // checking if password is valid

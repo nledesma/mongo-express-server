@@ -3,8 +3,6 @@ import express from 'express'
 import path from 'path'
 import logger from 'morgan'
 import mongoose from 'mongoose'
-import indexRouter from './routes/index'
-import usersRouter from './routes/users'
 import inboxRouter from './routes/inbox'
 import authRouter from './routes/auth'
 import bodyParser from 'body-parser'
@@ -28,8 +26,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', indexRouter)
-app.use('/users', usersRouter)
 app.use('/inbox', inboxRouter)
 app.use('/auth', authRouter)
 
