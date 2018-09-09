@@ -1,0 +1,19 @@
+version: '3'
+services:
+  express:
+    container_name: nodeServer
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      - .:/usr/src
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+      - "9229:9229"
+    links:
+      - mongodb:database 
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27018:27017"
