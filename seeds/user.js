@@ -11,14 +11,15 @@ const removeOldTest = async () => {
 }
 
 const totalMocks = mock.length
-const halfMocks = Math.floor(mock.length / 2)
+const segment = Math.floor(mock.length / 3)
 
 removeOldTest()
 let testUser = new User({
   email: 'test@getsirena.com',
   password: hashSync('test', genSaltSync(8), null),
-  sent: mock.slice(0, halfMocks),
-  received: mock.slice(halfMocks, totalMocks)
+  sent: mock.slice(0, segment),
+  received: mock.slice(segment, segment * 2),
+  drafts: mock.slice(segment * 2, totalMocks)
 })
 testUser.save(function (err) {
   if (err) {
